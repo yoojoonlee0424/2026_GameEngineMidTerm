@@ -16,16 +16,18 @@ public class EnemyPatrol : MonoBehaviour
     public float idleDuration;
     private float idleTimer;
 
+    private Animator anime;
 
 
     private void Awake()
     {
         initScale = enemy.localScale;
+        anime = GetComponent<Animator>();
     }
 
     private void OnDisable()
     {
-        
+        //anim.SetBool("moving", false);
     }
 
 
@@ -54,6 +56,7 @@ public class EnemyPatrol : MonoBehaviour
 
     private void DirectionChange()
     {
+        //anim.SetBool("moving", false);
         idleTimer += Time.deltaTime;
 
 
@@ -69,6 +72,8 @@ public class EnemyPatrol : MonoBehaviour
     private void MoveInDirection(int direction)
     {
         idleTimer = 0;
+        //anim.SetBool("moving", true);
+
 
         enemy.localScale = new Vector3(Mathf.Abs(initScale.x) * direction,
             initScale.y, initScale.z);

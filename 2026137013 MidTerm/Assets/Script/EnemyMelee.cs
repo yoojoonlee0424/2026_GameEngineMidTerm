@@ -12,7 +12,8 @@ public class EnemyMelee : MonoBehaviour
     public BoxCollider2D BoxCollider;
     public LayerMask playerLayer;
 
-    private PlayerHealth PlayerHealth;
+    private Health_Controll PlayerHealth;
+
     private Animator anime;
     
     private EnemyPatrol enemyPatrol;
@@ -29,11 +30,13 @@ public class EnemyMelee : MonoBehaviour
     void Update()
     {
         cooldownTimer += Time.deltaTime;
+
         if(PlayerSight())
         {
             if (cooldownTimer >= attackCooldown)
             {
                 cooldownTimer = 0;
+                //anime.SetTrigger("meleeAttack");
                 PlayerDamage();
             }
         }
@@ -54,7 +57,7 @@ public class EnemyMelee : MonoBehaviour
 
         if (hit.collider != null)
         {
-            PlayerHealth = hit.transform.GetComponent<PlayerHealth>();
+            PlayerHealth = hit.transform.GetComponent<Health_Controll>();
         }
 
         return hit.collider != null;
@@ -72,8 +75,7 @@ public class EnemyMelee : MonoBehaviour
     {
         if (PlayerSight())
         {
-            PlayerHealth.takeDamage(damage);
-            
+            PlayerHealth.TakeDamage(damage);
         }
     }
 
