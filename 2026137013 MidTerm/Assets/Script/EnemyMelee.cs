@@ -36,7 +36,7 @@ public class EnemyMelee : MonoBehaviour
             if (cooldownTimer >= attackCooldown)
             {
                 cooldownTimer = 0;
-                //anime.SetTrigger("meleeAttack");
+                anime.SetTrigger("meleeAttack");
                 PlayerDamage();
             }
         }

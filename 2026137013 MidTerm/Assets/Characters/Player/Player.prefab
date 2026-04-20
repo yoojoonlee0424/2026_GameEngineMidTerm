@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 2128803470422604247}
   - component: {fileID: 1903402077887788388}
   - component: {fileID: 2902727663805705585}
+  - component: {fileID: 2794252592368283542}
   - component: {fileID: 1983786843301446494}
   - component: {fileID: 8452232773914384912}
   - component: {fileID: 4043102984502132892}
@@ -64,7 +65,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.38, y: 0.47, z: 0}
-  m_LocalScale: {x: 0.3908435, y: 0.3908435, z: 0.3908435}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8351276839911968575}
@@ -118,7 +119,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3530305433866145776, guid: ecea2f8333731f5469a94db83dbb3713, type: 3}
+  m_Sprite: {fileID: -6761972326511286534, guid: 3698f6ea32fc3d04f8c38ad982690e97, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -194,7 +195,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.86, y: 1.74}
+    oldSize: {x: 0.98, y: 1.76}
     newSize: {x: 0.38, y: 0.36}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -202,6 +203,28 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.75846255, y: 1.7496284}
   m_EdgeRadius: 0
+--- !u!95 &2794252592368283542
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259974201048746100}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e986f921dddd33646b00c146a339577b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1983786843301446494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,8 +237,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7e109f662f27ec40a5065d694a77865, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  MoveSpeed: 4
-  JumpForce: 10
+  MoveSpeed: 6
+  JumpForce: 12
   JumpLow: 0.5
   dashingPower: 50
   dashingTime: 0.1
@@ -232,6 +255,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   tr: {fileID: 3867159032676910142}
+  anime: {fileID: 2794252592368283542}
 --- !u!114 &8452232773914384912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,7 +283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
   attackTranform: {fileID: 812954069681440906}
-  attackRange: 0.38
+  attackRange: 0.85
   attackableLayer:
     serializedVersion: 2
     m_Bits: 256

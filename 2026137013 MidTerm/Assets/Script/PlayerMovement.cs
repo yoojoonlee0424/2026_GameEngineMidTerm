@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Xml.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -42,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform wallCheck;
     public LayerMask wallLayer;
     public TrailRenderer tr;
+    public Animator anime;
 
 
 
@@ -49,15 +51,22 @@ public class PlayerMovement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        
     }
+
+
+
+
 
     // Update is called once per frame
     void Update()
     {
-        horizontal = Input.GetAxisRaw("Horizontal");
 
-        if(isDashing)
+        horizontal = Input.GetAxis("Horizontal");
+
+        anime.SetBool("moving", horizontal != 0);
+
+        if (isDashing)
         {
             return;
         }
@@ -123,6 +132,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && coyoteTimeCounte > 0f)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, JumpForce);
+            //anime.SetTrigger("jump");
         }
 
         if (Input.GetButtonDown("Jump") && rb.linearVelocity.y > 0f)
@@ -238,15 +248,22 @@ public class PlayerMovement : MonoBehaviour
         rb.linearVelocity = new Vector2(transform.localScale.x * dashingPower, 0f);
         tr.emitting = true;
 
+        anime.enabled = false;
+
         yield return new WaitForSeconds(dashingTime);
 
         tr.emitting = false;
         rb.gravityScale = originaGravity;
         isDashing=false;
 
+        anime.enabled = true;
+
         yield return new WaitForSeconds(dashingCooldown);
 
         canDash=true;
+
+
+        
     }
 
 

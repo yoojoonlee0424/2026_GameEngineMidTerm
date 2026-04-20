@@ -31,17 +31,18 @@ public class Health_Controll : MonoBehaviour
 
         if (currentHealth > 0)
         {
-            //anim.SetTrigger("hurt");
+            anim.SetTrigger("hurt");
         }
         else
         {
             if (dead == false)
             {
-                //anim.SetTrigger("die");
+                anim.SetTrigger("die");
 
                 if(Player != null)
                 {
                     Player.enabled = false;
+                    GetComponent<BoxCollider2D>().enabled = false;
                 }
                     
                 if(GetComponentInParent<EnemyPatrol>() != null)
