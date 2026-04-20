@@ -52,6 +52,7 @@ public class Health_Controll : MonoBehaviour
                 if(GetComponentInParent<EnemyMelee>() != null)
                 {
                     GetComponentInParent<EnemyMelee>().enabled = false;
+                    GetComponent<BoxCollider2D>().enabled = false;
                 }
                 
                 dead = true;

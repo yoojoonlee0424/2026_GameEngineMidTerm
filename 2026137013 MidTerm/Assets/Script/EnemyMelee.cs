@@ -6,7 +6,7 @@ public class EnemyMelee : MonoBehaviour
     public float range;
     public float colliderDistance;
 
-    public int damage;
+    public float damage;
     private float cooldownTimer = Mathf.Infinity;
 
     public BoxCollider2D BoxCollider;

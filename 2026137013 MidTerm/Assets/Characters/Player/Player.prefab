@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 64230883009471540}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.14, y: 0, z: 0}
+  m_LocalPosition: {x: 0.325, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 2902727663805705585}
   - component: {fileID: 1983786843301446494}
   - component: {fileID: 8452232773914384912}
+  - component: {fileID: 4043102984502132892}
   - component: {fileID: 3867159032676910142}
   m_Layer: 7
   m_Name: Player
@@ -63,8 +64,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.38, y: 0.47, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.3908435, y: 0.3908435, z: 0.3908435}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8351276839911968575}
   - {fileID: 812954069681440906}
@@ -117,7 +118,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9186120962189886632, guid: df596be78b0c5564cae1a20aebe32ce9, type: 3}
+  m_Sprite: {fileID: 3530305433866145776, guid: ecea2f8333731f5469a94db83dbb3713, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -189,17 +190,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.041890502, y: -0.0043335557}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.38, y: 0.36}
+    oldSize: {x: 0.86, y: 1.74}
     newSize: {x: 0.38, y: 0.36}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.38, y: 0.36}
+  m_Size: {x: 0.75846255, y: 1.7496284}
   m_EdgeRadius: 0
 --- !u!114 &1983786843301446494
 MonoBehaviour:
@@ -214,9 +215,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   MoveSpeed: 4
-  JumpForce: 8
+  JumpForce: 10
   JumpLow: 0.5
-  dashingPower: 24
+  dashingPower: 50
   dashingTime: 0.1
   dashingCooldown: 2
   wallSlidingSpeed: 1
@@ -243,7 +244,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 243932a16fb3f2a40be61a210d307ffe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
-  Hp: 10
+  startingHealth: 3
+  currentHealth: 0
+--- !u!114 &4043102984502132892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259974201048746100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62604c425d9b84546acd4707a741692e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
+  attackTranform: {fileID: 812954069681440906}
+  attackRange: 0.38
+  attackableLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  damage: 1
 --- !u!96 &3867159032676910142
 TrailRenderer:
   serializedVersion: 3
@@ -388,7 +408,7 @@ Transform:
   m_GameObject: {fileID: 2853608653668783946}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.176, z: 0}
+  m_LocalPosition: {x: 0, y: -0.855, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
