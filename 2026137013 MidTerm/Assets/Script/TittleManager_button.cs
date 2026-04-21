@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class TittleManager_button : MonoBehaviour
 {
 
@@ -17,7 +18,6 @@ public class TittleManager_button : MonoBehaviour
 
     public void CloseGame()
     {
-        UnityEditor.EditorApplication.isPlaying = false;
         Application.Quit();
     }
 
