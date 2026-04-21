@@ -2,6 +2,7 @@ using System.Collections;
 using System.Xml.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
@@ -9,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("이동&점프")]
     private float horizontal;
     public float MoveSpeed = 1.0f;
+    public float SpeedBuff = 2f;
     public float JumpForce = 1.0f;
     public float JumpLow = 1.0f;
     private bool IsFacingRight = true;
@@ -34,7 +36,13 @@ public class PlayerMovement : MonoBehaviour
     private float wallJumpingtime = 0.2f;
     private float walljumpingCounter;
     public float walljumpingDuration = 0.4f;
-    private Vector2 walljumpingPower = new Vector2(2f, 4f);
+    private Vector2 walljumpingPower = new Vector2(4f, 6f);
+
+
+
+    public float Trapdamage;
+
+    private bool isPickup = false;
 
 
     public Rigidbody2D rb;
@@ -44,6 +52,7 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask wallLayer;
     public TrailRenderer tr;
     public Animator anime;
+    public Health_Controll PlayerHealth;
 
 
 
@@ -51,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        anime = GetComponent<Animator>();
     }
 
 
@@ -132,7 +141,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && coyoteTimeCounte > 0f)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, JumpForce);
-            //anime.SetTrigger("jump");
+            anime.SetTrigger("jump");
         }
 
         if (Input.GetButtonDown("Jump") && rb.linearVelocity.y > 0f)
@@ -140,6 +149,8 @@ public class PlayerMovement : MonoBehaviour
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * JumpLow);
 
             coyoteTimeCounte = 0f;
+
+            anime.SetTrigger("jump");
         }
 
     }
@@ -157,10 +168,12 @@ public class PlayerMovement : MonoBehaviour
         {
             isWallSliding = true;
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, Mathf.Clamp(rb.linearVelocity.y, -wallSlidingSpeed, float.MaxValue));
+            anime.SetTrigger("Wall");
         }
         else
         {
             isWallSliding = false;
+
         }
     }
 
@@ -190,10 +203,16 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetButtonDown("Jump") && walljumpingCounter > 0f)
         {
             isWallJumping =true;
+
+            anime.SetTrigger("jump");
+
+            anime.enabled = false;
+
             rb.linearVelocity = new Vector2(WallJumpingDirection * walljumpingPower.x, walljumpingPower.y);
             walljumpingCounter = 0f;
             
-            if(transform.localScale.x != WallJumpingDirection)
+
+            if (transform.localScale.x != WallJumpingDirection)
             {
                 IsFacingRight = !IsFacingRight;
                 Vector3 scale = transform.localScale;
@@ -211,6 +230,7 @@ public class PlayerMovement : MonoBehaviour
     private void StopWalljumping()
     {
         isWallJumping=false;
+        anime.enabled = true;
     }
 
 
@@ -268,5 +288,73 @@ public class PlayerMovement : MonoBehaviour
 
 
 
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Respawn"))
+        {
 
-}
+            PlayerHealth.TakeDamage(Trapdamage);
+
+
+        }
+
+        if (collision.CompareTag("Finish"))
+        {
+            collision.GetComponent<LevelObject>().LoadNextLevel();
+
+        }
+
+
+        if (collision.CompareTag("health_item"))
+        {
+            PlayerHealth.Invincible();
+            Invoke(nameof(ResetHeath), 3f);
+            Destroy(collision.gameObject);
+        }
+
+
+        if (collision.CompareTag("Speed_item"))
+        {
+            MoveSpeed = MoveSpeed * SpeedBuff;
+            Invoke(nameof(ResetSpeed), 3f);
+            Destroy(collision.gameObject);
+        }
+
+
+        if (collision.CompareTag("Jump_item"))
+        {
+            JumpForce = JumpForce * SpeedBuff;
+            Invoke(nameof(ResetJump), 3f);
+            Destroy(collision.gameObject);
+        }
+
+
+        if(collision.CompareTag("Main_item"))
+        {
+            isPickup = true;
+            Destroy(collision.gameObject);
+
+        }
+
+
+    }
+
+    void ResetSpeed()
+    {
+        MoveSpeed = MoveSpeed / SpeedBuff;
+    }
+
+
+    void ResetJump()
+    {
+        JumpForce = JumpForce / SpeedBuff;
+    }
+
+    void ResetHeath()
+    {
+        PlayerHealth.InvincibleOff();
+    }
+
+
+
+    }

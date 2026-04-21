@@ -7,7 +7,10 @@ TagManager:
   - Boundary
   - Enemy
   - Obstacle
-  - item
+  - health_item
+  - Speed_item
+  - Jump_item
+  - Main_item
   layers:
   - Default
   - TransparentFX
@@ -42,6 +45,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 1041979379
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

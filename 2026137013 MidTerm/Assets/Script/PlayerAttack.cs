@@ -10,6 +10,8 @@ public class PlayerAttack : MonoBehaviour
 
     private RaycastHit2D[] hits;
 
+    public Animator anime;
+
 
 
 
@@ -20,6 +22,7 @@ public class PlayerAttack : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             Attack();
+            anime.SetTrigger("meleeAttack");
         }
     }
 
@@ -35,6 +38,7 @@ public class PlayerAttack : MonoBehaviour
             if(health_Controll != null )
             {
                 health_Controll.TakeDamage(damage);
+                
             }
             
         }

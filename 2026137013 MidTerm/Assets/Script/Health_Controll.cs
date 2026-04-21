@@ -22,7 +22,13 @@ public class Health_Controll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(currentHealth <= 0)
+        {
+            dead = true;
+
+
+
+        }
     }
 
     public void TakeDamage(float damage)
@@ -55,11 +61,40 @@ public class Health_Controll : MonoBehaviour
                     GetComponentInParent<EnemyMelee>().enabled = false;
                     GetComponent<BoxCollider2D>().enabled = false;
                 }
-                
+
+
+                if(GetComponent<TraceEnemyAi>() != null)
+                {
+                    GetComponentInParent<TraceEnemyAi>().enabled = false;
+                    GetComponent<BoxCollider2D>().enabled = false;
+                    Invoke(nameof(DestroyObj), 2f);
+                }
+
+                Debug.Log("hit");
+
                 dead = true;
 
             }
         }
+    }
+
+
+    public void Invincible()
+    {
+        currentHealth = 1000000;
+    }
+
+    public void InvincibleOff()
+    {
+        currentHealth = startingHealth;
+    }
+
+
+
+
+    void DestroyObj()
+    {
+        Destroy(this.gameObject);
     }
 
 }
