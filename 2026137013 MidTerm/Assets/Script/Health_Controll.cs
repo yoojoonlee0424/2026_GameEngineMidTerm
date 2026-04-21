@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEditor;
+using UnityEngine.SceneManagement;
 
 public class Health_Controll : MonoBehaviour
 {
@@ -22,13 +23,7 @@ public class Health_Controll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(currentHealth <= 0)
-        {
-            dead = true;
 
-
-
-        }
     }
 
     public void TakeDamage(float damage)
@@ -49,6 +44,7 @@ public class Health_Controll : MonoBehaviour
                 {
                     Player.enabled = false;
                     GetComponent<BoxCollider2D>().enabled = false;
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                 }
                     
                 if(GetComponentInParent<EnemyPatrol>() != null)

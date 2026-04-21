@@ -11,6 +11,8 @@ TagManager:
   - Speed_item
   - Jump_item
   - Main_item
+  - item
+  - Finish2
   layers:
   - Default
   - TransparentFX

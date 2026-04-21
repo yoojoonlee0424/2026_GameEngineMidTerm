@@ -304,6 +304,16 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
+        if (collision.CompareTag("Finish2"))
+        {
+            if(isPickup)
+            {
+                collision.GetComponent<LevelObject>().LoadNextLevel();
+            }
+            
+
+        }
+
 
         if (collision.CompareTag("health_item"))
         {
