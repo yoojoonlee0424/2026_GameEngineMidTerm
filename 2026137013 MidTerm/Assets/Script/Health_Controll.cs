@@ -11,6 +11,8 @@ public class Health_Controll : MonoBehaviour
     private PlayerMovement Player;
     private bool dead = false;
 
+    float score;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
@@ -56,6 +58,8 @@ public class Health_Controll : MonoBehaviour
                 {
                     GetComponentInParent<EnemyMelee>().enabled = false;
                     GetComponent<BoxCollider2D>().enabled = false;
+
+                    score += 1f;
                 }
 
 
@@ -64,6 +68,8 @@ public class Health_Controll : MonoBehaviour
                     GetComponentInParent<TraceEnemyAi>().enabled = false;
                     GetComponent<BoxCollider2D>().enabled = false;
                     Invoke(nameof(DestroyObj), 2f);
+
+                    score += 1f;
                 }
 
                 Debug.Log("hit");

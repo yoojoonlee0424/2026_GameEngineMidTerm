@@ -55,12 +55,14 @@ public class PlayerMovement : MonoBehaviour
     public Health_Controll PlayerHealth;
 
 
-
+    float score;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         anime = GetComponent<Animator>();
+
+        score = 0f;
     }
 
 
@@ -300,13 +302,28 @@ public class PlayerMovement : MonoBehaviour
 
         if (collision.CompareTag("Finish"))
         {
+            score += 10f;
+
+
+            HighScore.TrySet(SceneManager.GetActiveScene().buildIndex, (int)score);
+
+            
+
             collision.GetComponent<LevelObject>().LoadNextLevel();
 
         }
 
         if (collision.CompareTag("Finish2"))
         {
-            if(isPickup)
+
+            score += 10f;
+
+
+            HighScore.TrySet(SceneManager.GetActiveScene().buildIndex, (int)score);
+
+            
+
+            if (isPickup)
             {
                 collision.GetComponent<LevelObject>().LoadNextLevel();
             }
