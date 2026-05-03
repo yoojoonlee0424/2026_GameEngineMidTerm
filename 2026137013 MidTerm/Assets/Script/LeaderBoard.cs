@@ -1,4 +1,5 @@
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 
 public class LeaderBoard : MonoBehaviour
@@ -9,6 +10,8 @@ public class LeaderBoard : MonoBehaviour
     public TextMeshProUGUI stage4;
     public TextMeshProUGUI stage5;
 
+    public GameObject Leader;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -17,6 +20,10 @@ public class LeaderBoard : MonoBehaviour
         stage3.text = "Stage 3 : " + HighScore.Load(3).ToString();
         stage4.text = "Stage 4 : " + HighScore.Load(4).ToString();
         stage5.text = "Stage 5 : " + HighScore.Load(5).ToString();
+
+
+
+        Leader.SetActive(false);
     }
 
     // Update is called once per frame
@@ -24,4 +31,20 @@ public class LeaderBoard : MonoBehaviour
     {
         
     }
+
+
+
+    public void OpenLeader()
+    {
+        Leader.SetActive(true);
+    }
+
+    public void CloseLeader()
+    {
+        Leader.SetActive(false);
+    }
+
+
+
+
 }
