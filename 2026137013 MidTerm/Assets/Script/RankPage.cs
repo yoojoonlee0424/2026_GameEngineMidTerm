@@ -39,7 +39,7 @@ public class RankPage : MonoBehaviour
             GameObject row = Instantiate(rowPrefab, contentRoot);
             TMP_Text rankText = row.GetComponentInChildren<TMP_Text>();
             // 텍스트 형식
-            rankText.text = $"{i + 1}위. 이름: {sortedDate[i].playerName} 스코어: {sortedDate[i].score}";
+            rankText.text = $"{i + 1}위. 이름:{sortedDate[i].playerName}   스코어:{sortedDate[i].score}";
 
         }
 
