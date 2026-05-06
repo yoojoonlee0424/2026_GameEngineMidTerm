@@ -305,9 +305,9 @@ public class PlayerMovement : MonoBehaviour
             score += 10f;
 
 
-            HighScore.TrySet(SceneManager.GetActiveScene().buildIndex, (int)score);
+            //HighScore.TrySet(SceneManager.GetActiveScene().buildIndex, (int)score);
 
-            
+            StageResultSaver.SaveStage(SceneManager.GetActiveScene().buildIndex, (int)score);
 
             collision.GetComponent<LevelObject>().LoadNextLevel();
 
@@ -319,9 +319,10 @@ public class PlayerMovement : MonoBehaviour
             score += 10f;
 
 
-            HighScore.TrySet(SceneManager.GetActiveScene().buildIndex, (int)score);
+            //HighScore.TrySet(SceneManager.GetActiveScene().buildIndex, (int)score);
 
-            
+            StageResultSaver.SaveStage(SceneManager.GetActiveScene().buildIndex, (int)score);
+
 
             if (isPickup)
             {
@@ -334,6 +335,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (collision.CompareTag("health_item"))
         {
+            score += collision.GetComponent<ItemObject>().GetPoint();
+
             PlayerHealth.Invincible();
             Invoke(nameof(ResetHeath), 3f);
             Destroy(collision.gameObject);
@@ -342,6 +345,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (collision.CompareTag("Speed_item"))
         {
+            score += collision.GetComponent<ItemObject>().GetPoint();
+
             MoveSpeed = MoveSpeed * SpeedBuff;
             Invoke(nameof(ResetSpeed), 3f);
             Destroy(collision.gameObject);
@@ -350,6 +355,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (collision.CompareTag("Jump_item"))
         {
+            score += collision.GetComponent<ItemObject>().GetPoint();
+
             JumpForce = JumpForce * SpeedBuff;
             Invoke(nameof(ResetJump), 3f);
             Destroy(collision.gameObject);
@@ -358,6 +365,9 @@ public class PlayerMovement : MonoBehaviour
 
         if(collision.CompareTag("Main_item"))
         {
+            score += collision.GetComponent<ItemObject>().GetPoint();
+
+
             isPickup = true;
             Destroy(collision.gameObject);
 

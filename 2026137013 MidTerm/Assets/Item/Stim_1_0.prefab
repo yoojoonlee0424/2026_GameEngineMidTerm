@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 405959502394168518}
   - component: {fileID: 4038536548542027289}
   - component: {fileID: 1396756863771455609}
+  - component: {fileID: 2426619289708719255}
   m_Layer: 0
   m_Name: Stim_1_0
   m_TagString: Speed_item
@@ -137,3 +138,16 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.92, y: 1.92}
   m_EdgeRadius: 0
+--- !u!114 &2426619289708719255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5920800065024504482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efee4ace1c3587b42be25ce2ecc906fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemObject
+  date: {fileID: 11400000, guid: 5413c3278e42e294eab5ac87b6b4ac6a, type: 2}

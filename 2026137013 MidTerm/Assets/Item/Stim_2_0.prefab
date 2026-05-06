@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8693488599774882179}
   - component: {fileID: 3001826414371278394}
   - component: {fileID: 7080936514130466436}
+  - component: {fileID: 8607714286886220347}
   m_Layer: 0
   m_Name: Stim_2_0
   m_TagString: health_item
@@ -137,3 +138,16 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.92, y: 1.92}
   m_EdgeRadius: 0
+--- !u!114 &8607714286886220347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1648032971078139457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efee4ace1c3587b42be25ce2ecc906fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemObject
+  date: {fileID: 11400000, guid: 53c2d0d051045d245a79b02a688729a4, type: 2}

@@ -76,6 +76,8 @@ public class Health_Controll : MonoBehaviour
 
                 dead = true;
 
+                
+
             }
         }
     }

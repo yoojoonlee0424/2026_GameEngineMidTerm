@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3413889187562308862}
   - component: {fileID: 794952174634628052}
   - component: {fileID: 6187699282338587847}
+  - component: {fileID: -3650443998100455873}
   m_Layer: 0
   m_Name: Stim_3_0
   m_TagString: Jump_item
@@ -137,3 +138,16 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.92, y: 1.92}
   m_EdgeRadius: 0
+--- !u!114 &-3650443998100455873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4739390310982544985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efee4ace1c3587b42be25ce2ecc906fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemObject
+  date: {fileID: 11400000, guid: d7ad3cb6a684ef84cad86381b2f6bbf0, type: 2}

@@ -4,26 +4,26 @@ using UnityEngine;
 
 public class LeaderBoard : MonoBehaviour
 {
-    public TextMeshProUGUI stage1;
-    public TextMeshProUGUI stage2;
-    public TextMeshProUGUI stage3;
-    public TextMeshProUGUI stage4;
-    public TextMeshProUGUI stage5;
+
 
     public GameObject Leader;
+
+    public GameObject stage1;
+    public GameObject stage2;
+    public GameObject stage3;
+    public GameObject stage4;
+    public GameObject stage5;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        stage1.text = "Stage 1 : " + HighScore.Load(1).ToString();
-        stage2.text = "Stage 2 : " + HighScore.Load(2).ToString();
-        stage3.text = "Stage 3 : " + HighScore.Load(3).ToString();
-        stage4.text = "Stage 4 : " + HighScore.Load(4).ToString();
-        stage5.text = "Stage 5 : " + HighScore.Load(5).ToString();
-
-
-
         Leader.SetActive(false);
+        stage1.SetActive(false);
+        stage2.SetActive(false);
+        stage3.SetActive(false);
+        stage4.SetActive(false);
+        stage5.SetActive(false);
     }
 
     // Update is called once per frame
@@ -44,7 +44,39 @@ public class LeaderBoard : MonoBehaviour
         Leader.SetActive(false);
     }
 
+    public void OpenStage1()
+    {
+        stage1.SetActive (true);
+    }
+
+    public void OpenStage2()
+    {
+        stage2.SetActive(true);
+    }
+
+    public void OpenStage3()
+    {
+        stage3.SetActive(true);
+    }
+
+    public void OpenStage4()
+    {
+        stage4.SetActive(true);
+    }
+
+    public void OpenStage5()
+    {
+        stage5.SetActive(true);
+    }
 
 
+    public void CloseStage()
+    {
+        stage1.SetActive (false);
+        stage2.SetActive (false);
+        stage3.SetActive(false);
+        stage4.SetActive(false);
+        stage5.SetActive(false);
+    }
 
 }
